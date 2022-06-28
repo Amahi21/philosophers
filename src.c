@@ -6,7 +6,7 @@
 /*   By: amahi <amahi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 18:24:56 by amahi             #+#    #+#             */
-/*   Updated: 2022/06/15 21:21:30 by amahi            ###   ########.fr       */
+/*   Updated: 2022/06/23 20:12:21 by amahi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void	filling_struct(char **av, t_data *data)
 {
 	data->num_philo = ft_atoi(av[1]);
-	data->num_forks = ft_atoi(av[1]);
 	data->t_die = ft_atoi(av[2]);
 	data->t_eat = ft_atoi(av[3]);
 	data->t_sleep = ft_atoi(av[4]);
+	data->flag_for_ending = 0;
 	if (av[5])
 		data->t_must_eat = ft_atoi(av[5]);
 	else
@@ -52,4 +52,9 @@ int	ft_atoi(const char *str)
 			return (-1);
 	}
 	return ((int)res * min);
+}
+
+int	time_to_int(struct timeval time)
+{
+	return ((int)((time.tv_sec * 1000 + time.tv_usec / 1000)));
 }
